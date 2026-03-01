@@ -1,0 +1,311 @@
+:root {
+  --text-main: #edf4ff;
+  --text-soft: #bdd1ff;
+  --gold: #ffd18a;
+  --panel-bg: rgba(8, 16, 37, 0.72);
+  --panel-border: rgba(148, 190, 255, 0.33);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text-main);
+  font-family: Inter, system-ui, sans-serif;
+  background: #070d1f;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+}
+
+.ui-panel {
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(13, 26, 57, 0.93), rgba(8, 14, 31, 0.92));
+  border-right: 1px solid var(--panel-border);
+  overflow-y: auto;
+}
+
+.kicker {
+  margin: 0;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Cinzel, serif;
+}
+
+h1 {
+  margin: 0.45rem 0;
+  font-size: clamp(1.25rem, 3vw, 1.85rem);
+}
+
+.subtext {
+  margin-top: 0;
+  color: var(--text-soft);
+}
+
+.panel-block {
+  margin-top: 0.9rem;
+  padding: 0.9rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  background: var(--panel-bg);
+}
+
+.panel-block h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+}
+
+button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(255, 242, 217, 0.35);
+  color: var(--text-main);
+  background: linear-gradient(140deg, rgba(36, 66, 132, 0.95), rgba(79, 42, 152, 0.95));
+  border-radius: 999px;
+  padding: 0.52rem 0.85rem;
+  cursor: pointer;
+  transition: 140ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(109, 165, 255, 0.35);
+}
+
+button.active {
+  border-color: rgba(255, 218, 133, 0.7);
+  box-shadow: 0 0 0 1px rgba(255, 218, 133, 0.45);
+}
+
+.meter {
+  margin-bottom: 0.75rem;
+}
+
+.meter label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--text-soft);
+}
+
+progress {
+  width: 100%;
+  height: 0.85rem;
+}
+
+.meter span {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+.stage-wrap {
+  min-height: 100vh;
+}
+
+.vn-stage {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+  isolation: isolate;
+  transition: background 450ms ease;
+}
+
+.vn-stage::before,
+.vn-stage::after,
+.region-vfx {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.vn-stage::before {
+  background: radial-gradient(circle at 50% 110%, rgba(0, 0, 0, 0.72), transparent 57%);
+  z-index: 1;
+}
+
+.vn-stage::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.45));
+  z-index: 2;
+}
+
+.region-vfx {
+  z-index: 0;
+  mix-blend-mode: screen;
+  opacity: 0.65;
+}
+
+.vfx-a { animation: drift 20s linear infinite; }
+.vfx-b { animation: drift 13s linear infinite reverse; }
+.vfx-c { animation: pulse 6s ease-in-out infinite; }
+
+@keyframes drift {
+  from { transform: translateX(-2%) translateY(0); }
+  to { transform: translateX(2%) translateY(-2%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.78; }
+}
+
+.dialogue-box,
+.event-overlay {
+  position: relative;
+  z-index: 3;
+  width: min(900px, 94%);
+  border-radius: 14px;
+  border: 1px solid rgba(196, 220, 255, 0.4);
+  background: rgba(7, 15, 33, 0.72);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+.dialogue-box {
+  padding: 0.9rem 1rem;
+}
+
+.scene-label {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+.dialogue-box h3 {
+  margin: 0.35rem 0;
+}
+
+.dialogue-box p {
+  margin: 0;
+}
+
+.event-overlay {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  max-width: 420px;
+  padding: 0.75rem 0.85rem;
+}
+
+.event-tag {
+  margin: 0;
+  color: #9de8ff;
+  font-weight: 600;
+}
+
+.event-overlay h4 {
+  margin: 0.3rem 0;
+  font-size: 1.12rem;
+}
+
+.event-overlay p {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* REGION BACKGROUNDS */
+.region-agni {
+  background: radial-gradient(circle at 50% 18%, #ffb35f 0%, #c05a36 25%, #3c2036 65%, #101328 100%);
+}
+.region-agni .vfx-a { background: radial-gradient(circle at 15% 65%, rgba(255, 194, 94, 0.45), transparent 32%); }
+.region-agni .vfx-b { background: radial-gradient(circle at 75% 25%, rgba(255, 128, 78, 0.45), transparent 34%); }
+.region-agni .vfx-c { background: repeating-radial-gradient(circle at 50% 90%, rgba(255, 180, 94, 0.1) 0 8px, transparent 8px 18px); }
+
+.region-ushas {
+  background: linear-gradient(180deg, #ffd28e 0%, #f2a1a0 28%, #b273bb 58%, #303570 100%);
+}
+.region-ushas .vfx-a { background: radial-gradient(circle at 45% 10%, rgba(255, 244, 179, 0.5), transparent 35%); }
+.region-ushas .vfx-b { background: radial-gradient(circle at 25% 70%, rgba(255, 209, 157, 0.3), transparent 36%); }
+.region-ushas .vfx-c { background: linear-gradient(115deg, rgba(255, 247, 222, 0.18), transparent 40%); }
+
+.region-indra {
+  background: linear-gradient(180deg, #88a5df 0%, #35579a 30%, #191f4d 62%, #0c1026 100%);
+}
+.region-indra .vfx-a { background: linear-gradient(130deg, rgba(181, 225, 255, 0.42), transparent 30%); }
+.region-indra .vfx-b { background: repeating-linear-gradient(160deg, rgba(170, 227, 255, 0.12) 0 4px, transparent 4px 14px); }
+.region-indra .vfx-c { background: radial-gradient(circle at 70% 72%, rgba(112, 180, 255, 0.35), transparent 38%); }
+
+.region-rivers {
+  background: linear-gradient(180deg, #a9d4ff 0%, #4f8fd4 35%, #28659d 60%, #1b3b4f 100%);
+}
+.region-rivers .vfx-a { background: radial-gradient(circle at 50% 72%, rgba(143, 228, 255, 0.45), transparent 38%); }
+.region-rivers .vfx-b { background: repeating-linear-gradient(180deg, rgba(169, 237, 255, 0.08) 0 6px, transparent 6px 18px); }
+.region-rivers .vfx-c { background: radial-gradient(circle at 18% 18%, rgba(198, 255, 191, 0.23), transparent 30%); }
+
+.region-marut {
+  background: linear-gradient(180deg, #9ac4dd 0%, #4d6ca9 30%, #2b3568 60%, #151a35 100%);
+}
+.region-marut .vfx-a { background: repeating-linear-gradient(140deg, rgba(214, 233, 255, 0.11) 0 8px, transparent 8px 22px); }
+.region-marut .vfx-b { background: radial-gradient(circle at 80% 20%, rgba(170, 232, 255, 0.3), transparent 36%); }
+.region-marut .vfx-c { background: radial-gradient(circle at 30% 84%, rgba(162, 184, 255, 0.25), transparent 31%); }
+
+.region-surya {
+  background: linear-gradient(180deg, #fff0b8 0%, #ffcd71 25%, #cf8f42 52%, #5f3754 100%);
+}
+.region-surya .vfx-a { background: radial-gradient(circle at 50% 12%, rgba(255, 255, 207, 0.62), transparent 29%); }
+.region-surya .vfx-b { background: repeating-linear-gradient(90deg, rgba(255, 247, 182, 0.12) 0 6px, transparent 6px 16px); }
+.region-surya .vfx-c { background: radial-gradient(circle at 62% 72%, rgba(255, 196, 126, 0.3), transparent 34%); }
+
+.region-varuna {
+  background: linear-gradient(180deg, #20396f 0%, #152554 30%, #0f183d 55%, #080c24 100%);
+}
+.region-varuna .vfx-a { background: radial-gradient(circle at 55% 15%, rgba(199, 221, 255, 0.35), transparent 30%); }
+.region-varuna .vfx-b { background: radial-gradient(circle at 45% 75%, rgba(109, 181, 255, 0.3), transparent 36%); }
+.region-varuna .vfx-c { background: repeating-radial-gradient(circle at 50% 78%, rgba(193, 230, 255, 0.1) 0 5px, transparent 5px 13px); }
+
+.region-rishi {
+  background: linear-gradient(180deg, #8e7cff 0%, #5f46bc 28%, #342868 54%, #140f34 100%);
+}
+.region-rishi .vfx-a { background: radial-gradient(circle at 50% 32%, rgba(220, 178, 255, 0.35), transparent 35%); }
+.region-rishi .vfx-b { background: repeating-linear-gradient(45deg, rgba(202, 173, 255, 0.12) 0 5px, transparent 5px 17px); }
+.region-rishi .vfx-c { background: radial-gradient(circle at 26% 74%, rgba(145, 233, 255, 0.24), transparent 32%); }
+
+.event-overlay[data-tone="danger"] {
+  border-color: rgba(255, 149, 149, 0.55);
+  background: rgba(55, 10, 18, 0.72);
+}
+
+.event-overlay[data-tone="blessing"] {
+  border-color: rgba(170, 255, 191, 0.5);
+  background: rgba(11, 45, 22, 0.68);
+}
+
+@media (max-width: 960px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .ui-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--panel-border);
+  }
+
+  .stage-wrap,
+  .vn-stage {
+    min-height: 70vh;
+  }
+}
