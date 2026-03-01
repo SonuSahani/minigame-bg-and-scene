@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mandala 1 VN Background + Event Scenes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="ui-panel">
+      <p class="kicker">🕉️ MANDALA 1 — AGE OF INVOCATION</p>
+      <h1>VN Background Scene Director</h1>
+      <p class="subtext">
+        Pick a world region and trigger event scenes to instantly swap a visual-novel style background.
+      </p>
+
+      <section class="panel-block">
+        <h2>World Regions</h2>
+        <div id="sceneButtons" class="button-grid"></div>
+      </section>
+
+      <section class="panel-block">
+        <h2>Event Scene Overlays</h2>
+        <div class="button-grid">
+          <button data-event="agni-weakening">🔥 Agni Weakening</button>
+          <button data-event="indra-victory">⚡ Indra Victory</button>
+          <button data-event="dawn-renewal">🌅 Dawn Renewal</button>
+          <button data-event="rain-invocation">🌧️ Rain Invocation</button>
+          <button data-event="rta-collapse">🌌 Rta Collapse</button>
+          <button data-event="clear">🫧 Clear Event</button>
+        </div>
+      </section>
+
+      <section class="panel-block meters-block">
+        <h2>Cosmic State</h2>
+        <div class="meter">
+          <label for="rtaMeter">Rta Stability</label>
+          <progress id="rtaMeter" max="100" value="64"></progress>
+          <span id="rtaValue">64%</span>
+        </div>
+        <div class="meter">
+          <label for="agniMeter">Agni Flame</label>
+          <progress id="agniMeter" max="100" value="72"></progress>
+          <span id="agniValue">72%</span>
+        </div>
+      </section>
+    </aside>
+
+    <main class="stage-wrap">
+      <section id="stage" class="vn-stage region-agni">
+        <div class="region-vfx vfx-a"></div>
+        <div class="region-vfx vfx-b"></div>
+        <div class="region-vfx vfx-c"></div>
+
+        <article class="dialogue-box">
+          <p id="sceneLabel" class="scene-label">🔥 Agni Ritual Plains</p>
+          <h3 id="sceneTitle">The altar-fire answers your footsteps.</h3>
+          <p id="sceneDesc">Floating embers drift over ritual grasslands as priests wait for your hymn.</p>
+        </article>
+
+        <article id="eventOverlay" class="event-overlay hidden">
+          <p id="eventTag" class="event-tag"></p>
+          <h4 id="eventTitle"></h4>
+          <p id="eventDesc"></p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
